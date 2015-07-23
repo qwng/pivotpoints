@@ -38,11 +38,11 @@ function(folderPath = getwd(), rsiPeriod = 14){
     }
   }
   
-  dataset <- dataset[, c(1, 3:5)]
+  DATETIME <- as.POSIXlt(as.character(dataset[,1]), format = "%Y/%m/%d %H:%M:%S")
+  dataset <- data.frame(DATETIME, dataset[,3:5])
   colnames(dataset) <- c("DATETIME", "high", "low", "close")
-  dataset[,1] <- lapply(dataset[,1], function(x) 
-    as.POSIXlt(as.character(x), format = "%Y/%m/%d %H:%M:%S"))
   rsi <- calRSI(data = dataset, rsiPeriod)
   dataset <- data.frame(dataset, rsi_rsi = rsi)
-  write.csv(file = file.path(folderPath, "dataCombined.csv"), dataset, row.names = FALSE)
+  write.csv(file = file.path(folderPath, "dataCombined.csv"),
+  dataset, row.names = FALSE)
 }
