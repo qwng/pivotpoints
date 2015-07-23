@@ -1,0 +1,12 @@
+Package: pivotPoints
+Type: Package
+Title: The application of Camarilla pivots in trading
+Version: 1.01
+Date: 2015-07-23
+Author: Qi Wang
+Maintainer: Qi Wang <qwpurdue@gmail.com>
+Description: Implement Camarilla pivots strategy in trading
+License: GPL-2 | GPL-3
+Depends: R (>= 2.2.0)
+URL: http://www.eqbcapital.com/
+
