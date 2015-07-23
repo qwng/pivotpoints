@@ -39,6 +39,7 @@ library(dplyr)
     }
   }
   
+  dataset <- data.frame(dataset)
   DATETIME <- as.POSIXlt(as.character(dataset[,1]), format = "%Y/%m/%d %H:%M:%S")
   dataset <- data.frame(DATETIME, dataset[,3:5])
   colnames(dataset) <- c("DATETIME", "high", "low", "close")
