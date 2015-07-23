@@ -1,6 +1,7 @@
 join_data <-
 function(folderPath = getwd(), rsiPeriod = 14){
-    
+library(readr)    
+library(dplyr)
   fileList <- list.files(folderPath)
   
   # if there is a pre existing dataset in current workspace,
@@ -43,6 +44,7 @@ function(folderPath = getwd(), rsiPeriod = 14){
   colnames(dataset) <- c("DATETIME", "high", "low", "close")
   rsi <- calRSI(data = dataset, rsiPeriod)
   dataset <- data.frame(dataset, rsi_rsi = rsi)
+  dataset <- filter(dataset, !duplicated(DATETIME))  
   write.csv(file = file.path(folderPath, "dataCombined.csv"),
   dataset, row.names = FALSE)
 }
